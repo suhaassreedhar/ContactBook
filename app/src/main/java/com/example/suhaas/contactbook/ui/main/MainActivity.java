@@ -69,7 +69,6 @@ public class MainActivity extends BaseActivity implements MainMvpView, ContactLi
         if(mRecyclerView != null) {
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mContactListAdapter);
 
         mErrorView.setErrorListener(this);

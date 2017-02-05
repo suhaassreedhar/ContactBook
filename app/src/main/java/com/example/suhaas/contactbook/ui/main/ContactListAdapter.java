@@ -48,8 +48,8 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     public void onBindViewHolder(ContactViewHolder holder, int position) {
         Contacts contacts = mContacts.get(position);
         holder.mContacts = contacts;
-        holder.nameText.setText(String.format("%s%s"
-                , contacts.getFirstName().substring(0, 1).toUpperCase(), contacts.getLastName().substring(1)));
+        holder.nameText.setText(String.format("%s %s"
+                , contacts.getFirstName().substring(0).toUpperCase(), contacts.getLastName().substring(0).toUpperCase()));
     }
 
     @Override
