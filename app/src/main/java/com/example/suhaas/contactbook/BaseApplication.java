@@ -5,6 +5,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.suhaas.contactbook.injection.component.ApplicationComponent;
+import com.example.suhaas.contactbook.injection.component.DaggerApplicationComponent;
+import com.example.suhaas.contactbook.injection.module.ApplicationModule;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -30,11 +32,11 @@ public class BaseApplication extends Application {
     }
 
     public ApplicationComponent getComponent() {
-//        if (mApplicationComponent == null) {
-//            mApplicationComponent = DaggerApplicationComponent.builder()
-//                    .applicationModule(new ApplicationModule(this))
-//                    .build();
-//        }
+        if (mApplicationComponent == null) {
+            mApplicationComponent = DaggerApplicationComponent.builder()
+                    .applicationModule(new ApplicationModule(this))
+                    .build();
+        }
         return mApplicationComponent;
     }
 
