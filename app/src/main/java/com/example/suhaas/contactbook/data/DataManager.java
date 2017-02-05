@@ -24,22 +24,17 @@ public class DataManager {
         mContactService = mvpStarterService;
     }
 
-    public Single<List<String>> getContactList(int limit) {
+    public Single<List<Contacts>> getContactList(int limit) {
         return mContactService.getContactList(limit)
-                .flatMap(new Func1<ContactListResponse, Single<List<String>>>() {
+                .flatMap(new Func1<List<Contacts>, Single<List<Contacts>>>() {
                     @Override
-                    public Single<List<String>> call(ContactListResponse contactListResponse) {
-                        List<String> contactNames = new ArrayList<>();
-                        for (Contacts contacts : contactListResponse.results) {
-                            contactNames.add(contacts.getFirstName());
-                            contactNames.add(contacts.getLastName());
-                        }
-                        return Single.just(contactNames);
+                    public Single<List<Contacts>> call(List<Contacts> contactListResponse) {
+                        return Single.just(contactListResponse);
                     }
                 });
     }
 
-    public Single<ContactResponse> getPokemon(String name) {
+    public Single<ContactResponse> getContact(String name) {
         return mContactService.getContact(name);
     }
 }

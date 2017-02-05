@@ -1,6 +1,7 @@
 package com.example.suhaas.contactbook.ui.main;
 
 import com.example.suhaas.contactbook.data.DataManager;
+import com.example.suhaas.contactbook.data.model.Contacts;
 import com.example.suhaas.contactbook.injection.ConfigPersistent;
 import com.example.suhaas.contactbook.ui.base.BasePresenter;
 
@@ -34,9 +35,9 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
         Subscription subs = mDataManager.getContactList(limit)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new SingleSubscriber<List<String>>() {
+                .subscribe(new SingleSubscriber<List<Contacts>>() {
                     @Override
-                    public void onSuccess(List<String> contacts) {
+                    public void onSuccess(List<Contacts> contacts) {
                         getMvpView().showProgress(false);
                         getMvpView().showContacts(contacts);
                     }

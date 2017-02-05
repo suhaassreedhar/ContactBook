@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.suhaas.contactbook.R;
+import com.example.suhaas.contactbook.data.model.Contacts;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +20,7 @@ import butterknife.ButterKnife;
 
 public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ContactViewHolder> {
 
-    private List<String> mContacts;
+    private List<Contacts> mContacts;
     private ClickListener mClickListener;
 
     @Inject
@@ -27,7 +28,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         mContacts = Collections.emptyList();
     }
 
-    public void setContacts(List<String> contacts) {
+    public void setContacts(List<Contacts> contacts) {
         mContacts = contacts;
     }
 
@@ -45,10 +46,10 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
 
     @Override
     public void onBindViewHolder(ContactViewHolder holder, int position) {
-        String contacts = mContacts.get(position);
+        Contacts contacts = mContacts.get(position);
         holder.mContacts = contacts;
         holder.nameText.setText(String.format("%s%s"
-                , contacts.substring(0, 1).toUpperCase(), contacts.substring(1)));
+                , contacts.getFirstName().substring(0, 1).toUpperCase(), contacts.getLastName().substring(1)));
     }
 
     @Override
@@ -57,18 +58,19 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     }
 
     public interface ClickListener {
-        void onContactClick(String contacts);
+        void onContactClick(Contacts contacts);
     }
 
     class ContactViewHolder extends RecyclerView.ViewHolder {
 
-        String mContacts;
+        Contacts mContacts;
         @BindView(R.id.text_name)
         TextView nameText;
 
         ContactViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            nameText = (TextView) itemView.findViewById(R.id.text_name);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

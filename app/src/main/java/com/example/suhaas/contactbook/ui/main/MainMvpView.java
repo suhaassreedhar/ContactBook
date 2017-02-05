@@ -1,13 +1,14 @@
 package com.example.suhaas.contactbook.ui.main;
 
 
+import com.example.suhaas.contactbook.data.model.Contacts;
 import com.example.suhaas.contactbook.ui.base.MvpView;
 
 import java.util.List;
 
 public interface MainMvpView extends MvpView {
 
-    void showContacts(List<String> contacts);
+    void showContacts(List<Contacts> contacts);
 
     void showProgress(boolean show);
 

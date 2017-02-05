@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.ProgressBar;
 
 import com.example.suhaas.contactbook.R;
+import com.example.suhaas.contactbook.data.model.Contacts;
 import com.example.suhaas.contactbook.ui.base.BaseActivity;
 import com.example.suhaas.contactbook.ui.common.ErrorView;
 
@@ -88,7 +89,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, ContactLi
     }
 
     @Override
-    public void showContacts(List<String> contacts) {
+    public void showContacts(List<Contacts> contacts) {
         mContactListAdapter.setContacts(contacts);
         mContactListAdapter.notifyDataSetChanged();
 
@@ -125,7 +126,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, ContactLi
     }
 
     @Override
-    public void onContactClick(String contacts) {
+    public void onContactClick(Contacts contacts) {
 //        startActivity(DetailActivity.getStartIntent(this, contacts));
     }
 
