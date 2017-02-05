@@ -11,6 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -49,5 +50,9 @@ dependencies {
     annotationProcessor daggerCompiler
     testAnnotationProcessor daggerCompiler
     androidTestAnnotationProcessor daggerCompiler
+
+    compile "com.squareup.retrofit2:adapter-rxjava:2.1.0"
+    compile "com.squareup.okhttp3:okhttp:3.5.0"
+    compile "com.squareup.okhttp3:logging-interceptor:3.5.0"
 
 }
