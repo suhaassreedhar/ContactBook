@@ -5,6 +5,7 @@ import com.example.suhaas.contactbook.data.model.Contacts;
 import com.example.suhaas.contactbook.injection.ConfigPersistent;
 import com.example.suhaas.contactbook.ui.base.BasePresenter;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,6 +14,8 @@ import rx.SingleSubscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+
+import static android.R.id.list;
 
 @ConfigPersistent
 public class MainPresenter extends BasePresenter<MainMvpView> {

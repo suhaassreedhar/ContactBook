@@ -11,6 +11,7 @@ import com.example.suhaas.contactbook.R;
 import com.example.suhaas.contactbook.data.model.Contacts;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -50,6 +51,12 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         holder.mContacts = contacts;
         holder.nameText.setText(String.format("%s %s"
                 , contacts.getFirstName().substring(0).toUpperCase(), contacts.getLastName().substring(0).toUpperCase()));
+        Collections.sort(mContacts, new Comparator<Contacts>() {
+            @Override
+            public int compare(Contacts p1, Contacts p2) {
+                return p1.getFirstName().compareTo(p2.getFirstName());
+            }
+        });
     }
 
     @Override
